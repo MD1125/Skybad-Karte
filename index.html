@@ -1,42 +1,95 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Skybad Interaktieve Karte</title>
-    
-    <!-- Favicon -->
-    <link rel="icon" href="data:,">
-    
-    <!-- CSS -->
-    <style>
-        html, body {
-            margin: 0;
-            height: 100%;
-            overflow: hidden;
-        }
-        .sketchfab-embed-wrapper {
-            width: 100vw;
-            height: 100vh;
-            position: absolute;
-            top: 0;
-            left: 0;
-        }
-        iframe {
-            width: 100%;
-            height: 100%;
-            border: none;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Skybad Karte | MD1125</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@200;300;400;500;600;700&display=swap">
+  <link rel="stylesheet" href="index.css"> <!-- Link to external CSS file -->
 </head>
 <body>
-    <div class="sketchfab-embed-wrapper">
-        <iframe title="Skybad Map" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" allow="autoplay; fullscreen; xr-spatial-tracking" xr-spatial-tracking execution-while-out-of-viewport execution-while-not-rendered web-share src="https://sketchfab.com/models/573fdf7311354f248d7c02a81fd58e71/embed"></iframe>
-        <p style="font-size: 13px; font-weight: normal; margin: 5px; color: #4A4A4A;">
-            <a href="https://sketchfab.com/3d-models/skybad-map-573fdf7311354f248d7c02a81fd58e71?utm_medium=embed&utm_campaign=share-popup&utm_content=573fdf7311354f248d7c02a81fd58e71" target="_blank" rel="nofollow" style="font-weight: bold; color: #1CAAD9;">Skybad Map</a> by 
-            <a href="https://sketchfab.com/MD1125?utm_medium=embed&utm_campaign=share-popup&utm_content=573fdf7311354f248d7c02a81fd58e71" target="_blank" rel="nofollow" style="font-weight: bold; color: #1CAAD9;">MD1125</a> on 
-            <a href="https://sketchfab.com?utm_medium=embed&utm_campaign=share-popup&utm_content=573fdf7311354f248d7c02a81fd58e71" target="_blank" rel="nofollow" style="font-weight: bold; color: #1CAAD9;">Sketchfab</a>
-        </p>
+  <div class="wrapper">
+    <h1>Skybad Karte</h1>
+    <hr>
+    <a href="#" class="cta-button" data-embed="skybad">Skybad Karte</a>
+    <hr class="small-line">
+    <a href="#" class="cta-button" data-embed="space-center">Space Center</a>
+    <a href="#" class="cta-button" data-embed="future-world">Future World</a>
+    <a href="#" class="cta-button" data-embed="space-tower">Space Tower</a>
+    <a href="#" class="cta-button">Galaxy Tower</a>
+    <a href="#" class="cta-button">Außen Turm</a>
+    <a href="#" class="cta-button">Andere Rutschen</a>
+    <div class="footer" id="currentYear">
+      &copy; <span id="copyright-year"></span> MD1125. All rights reserved. DAS IST KEINE SKYBAD WEBSITE!!!!!!
     </div>
+  </div>
+
+  <div class="overlay" id="embed-overlay">
+    <div class="embed-container">
+      <button class="close-button" id="close-embed">X</button>
+      <div id="embed-content"></div>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById('copyright-year').textContent = new Date().getFullYear();
+
+    const embedData = {
+      skybad: `
+        <div class="sketchfab-embed-wrapper">
+          <iframe title="Skybad-karte" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" allow="autoplay; fullscreen; xr-spatial-tracking" xr-spatial-tracking execution-while-out-of-viewport execution-while-not-rendered web-share src="https://sketchfab.com/models/e6aa86cf121446c399b8dbd3d7392a6a/embed"></iframe>
+          <p style="font-size: 13px; font-weight: normal; margin: 5px; color: #4A4A4A;">
+            <a href="https://sketchfab.com/3d-models/skybad-karte-e6aa86cf121446c399b8dbd3d7392a6a?utm_medium=embed&utm_campaign=share-popup&utm_content=e6aa86cf121446c399b8dbd3d7392a6a" target="_blank" rel="nofollow" style="font-weight: bold; color: #1CAAD9;">Skybad-karte</a> by
+            <a href="https://sketchfab.com/MD1125?utm_medium=embed&utm_campaign=share-popup&utm_content=e6aa86cf121446c399b8dbd3d7392a6a" target="_blank" rel="nofollow" style="font-weight: bold; color: #1CAAD9;">MD1125</a> on
+            <a href="https://sketchfab.com?utm_medium=embed&utm_campaign=share-popup&utm_content=e6aa86cf121446c399b8dbd3d7392a6a" target="_blank" rel="nofollow" style="font-weight: bold; color: #1CAAD9;">Sketchfab</a>
+          </p>
+        </div>`,
+      "space-center": `
+        <div class="sketchfab-embed-wrapper">
+          <iframe title="Space Center" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" allow="autoplay; fullscreen; xr-spatial-tracking" xr-spatial-tracking execution-while-out-of-viewport execution-while-not-rendered web-share src="https://sketchfab.com/models/e4424ed742704df99b25160cb55848eb/embed"></iframe>
+          <p style="font-size: 13px; font-weight: normal; margin: 5px; color: #4A4A4A;">
+            <a href="https://sketchfab.com/3d-models/space-center-e4424ed742704df99b25160cb55848eb?utm_medium=embed&utm_campaign=share-popup&utm_content=e4424ed742704df99b25160cb55848eb" target="_blank" rel="nofollow" style="font-weight: bold; color: #1CAAD9;">Space Center</a> by
+            <a href="https://sketchfab.com/MD1125?utm_medium=embed&utm_campaign=share-popup&utm_content=e4424ed742704df99b25160cb55848eb" target="_blank" rel="nofollow" style="font-weight: bold; color: #1CAAD9;">MD1125</a> on
+            <a href="https://sketchfab.com?utm_medium=embed&utm_campaign=share-popup&utm_content=e4424ed742704df99b25160cb55848eb" target="_blank" rel="nofollow" style="font-weight: bold; color: #1CAAD9;">Sketchfab</a>
+          </p>
+        </div>`,
+      "future-world": `
+        <div class="sketchfab-embed-wrapper">
+          <iframe title="Future World" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" allow="autoplay; fullscreen; xr-spatial-tracking" xr-spatial-tracking execution-while-out-of-viewport execution-while-not-rendered web-share src="https://sketchfab.com/models/59eb166d0fe1471d835d7cf3d3c4759d/embed"></iframe>
+          <p style="font-size: 13px; font-weight: normal; margin: 5px; color: #4A4A4A;">
+            <a href="https://sketchfab.com/3d-models/future-world-59eb166d0fe1471d835d7cf3d3c4759d?utm_medium=embed&utm_campaign=share-popup&utm_content=59eb166d0fe1471d835d7cf3d3c4759d" target="_blank" rel="nofollow" style="font-weight: bold; color: #1CAAD9;">Future World</a> by
+            <a href="https://sketchfab.com/MD1125?utm_medium=embed&utm_campaign=share-popup&utm_content=59eb166d0fe1471d835d7cf3d3c4759d" target="_blank" rel="nofollow" style="font-weight: bold; color: #1CAAD9;">MD1125</a> on
+            <a href="https://sketchfab.com?utm_medium=embed&utm_campaign=share-popup&utm_content=59eb166d0fe1471d835d7cf3d3c4759d" target="_blank" rel="nofollow" style="font-weight: bold; color: #1CAAD9;">Sketchfab</a>
+          </p>
+        </div>`,
+      "space-tower": `
+        <div class="sketchfab-embed-wrapper">
+          <iframe title="Space Tower" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" allow="autoplay; fullscreen; xr-spatial-tracking" xr-spatial-tracking execution-while-out-of-viewport execution-while-not-rendered web-share src="https://sketchfab.com/models/6d1aa9420c0041e2a0da825e66e35c8e/embed"></iframe>
+          <p style="font-size: 13px; font-weight: normal; margin: 5px; color: #4A4A4A;">
+            <a href="https://sketchfab.com/3d-models/space-tower-6d1aa9420c0041e2a0da825e66e35c8e?utm_medium=embed&utm_campaign=share-popup&utm_content=6d1aa9420c0041e2a0da825e66e35c8e" target="_blank" rel="nofollow" style="font-weight: bold; color: #1CAAD9;">Space Tower</a> by
+            <a href="https://sketchfab.com/MD1125?utm_medium=embed&utm_campaign=share-popup&utm_content=6d1aa9420c0041e2a0da825e66e35c8e" target="_blank" rel="nofollow" style="font-weight: bold; color: #1CAAD9;">MD1125</a> on
+            <a href="https://sketchfab.com?utm_medium=embed&utm_campaign=share-popup&utm_content=6d1aa9420c0041e2a0da825e66e35c8e" target="_blank" rel="nofollow" style="font-weight: bold; color: #1CAAD9;">Sketchfab</a>
+          </p>
+        </div>`
+    };
+
+    const buttons = document.querySelectorAll('.cta-button[data-embed]');
+    const embedContent = document.getElementById('embed-content');
+    const embedOverlay = document.getElementById('embed-overlay');
+    const closeEmbedButton = document.getElementById('close-embed');
+
+    buttons.forEach(button => {
+      button.addEventListener('click', (event) => {
+        event.preventDefault();
+        const embedType = button.getAttribute('data-embed');
+        embedContent.innerHTML = embedData[embedType];
+        embedOverlay.style.display = 'flex';
+      });
+    });
+
+    closeEmbedButton.addEventListener('click', () => {
+      embedOverlay.style.display = 'none';
+    });
+  </script>
 </body>
 </html>
